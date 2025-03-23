@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const app = express();
 app.use(cors({
-    origin: 'https://weather-website-topaz.vercel.app/'
+    origin: 'https://weather-website-topaz.vercel.app'
 }));
 app.use(express.json());
 
