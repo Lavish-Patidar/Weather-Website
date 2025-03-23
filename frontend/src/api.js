@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000'; // Update this if the backend URL changes
+const API_URL = 'https://weather-website-api-one.vercel.app/'; // Update this if the backend URL changes
 
 export const fetchWeather = async (city) => {
     try {
