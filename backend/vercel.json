@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/weather/(.*)",
+      "src": "/(.*)",
       "dest": "server.js"
     }
   ]
