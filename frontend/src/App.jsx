@@ -9,7 +9,7 @@ const App = () => {
     const [city, setCity] = useState('');
     const [weather, setWeather] = useState(null);
     const [forecast, setForecast] = useState([]);
-    const [cityValed, setCityValed] = useState(false);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         if (city) {
@@ -18,18 +18,12 @@ const App = () => {
     }, [city]);
 
     const fetchWeatherData = async () => {
-        if (!city) {
-            setCityValed(false)
-            return;
-        }
-
         try {
             const data = await fetchWeather(city);
             setWeather(data);
             fetchForecastData(city);
-            setCityValed(true);
         } catch (error) {
-            setError('City not found. Please enter a valid city name.');
+            setError(error.message);
         }
     };
 
@@ -46,8 +40,8 @@ const App = () => {
         <Container component="main" >
             <CssBaseline />
             <Search setCity={setCity} />
-            {cityValed && < Weather weather={weather} />}
-            {cityValed && <Forecast forecast={forecast} />}
+            {city && <Weather weather={weather} />}
+            {city && <Forecast forecast={forecast} />}
         </Container>
     );
 };
